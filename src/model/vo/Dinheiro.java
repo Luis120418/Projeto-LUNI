@@ -10,4 +10,4 @@ public record Dinheiro(double valor) {
         if (novo < 0) throw new IllegalArgumentException("Saldo insuficiente");
         return new Dinheiro(novo);
     }
-    @Override public String toString(){ return String.format("R$%.2f", valor); }
+    @Override public String toString(){ return String.format("R$%.2f", valor); }}
