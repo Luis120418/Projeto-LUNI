@@ -1,6 +1,6 @@
 package ui;
 
-import config.Config;
+import Config;
 
 public class ConsoleApp {
     private final Config config = new Config();
