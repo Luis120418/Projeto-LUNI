@@ -30,6 +30,8 @@ class Startup {
         this.moral = moral;
     }
 
+    // sla alguma coisa 
+
     public void registrar(String linha) {
         historico.add("R" + rodadaAtual + " - " + linha);
     }
