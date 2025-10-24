@@ -40,10 +40,10 @@ resources/
 Compile e execute o `Main` **incluindo `resources` no classpath**:
 
 ```bash
-# Compilar (Windows PowerShell)
+# Compilar (Windows)
 javac Main.java
 
-# Executar (Windows PowerShell)
+# Executar (Windows) 
 java Main
 ```
 
