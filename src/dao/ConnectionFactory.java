@@ -18,7 +18,8 @@ public class ConnectionFactory {
             // Cria o banco e executa o schema.sql se ainda não existir
             try (Connection conn = getConnection()) {
                 Statement stmt = conn.createStatement();
-                stmt.execute("RUNSCRIPT FROM 'src/dao/schema.sql'");
+                stmt.execute("RUNSCRIPT FROM 'resources/schema.sql'");
+
             }
         } catch (Exception e) {
             throw new RuntimeException("Erro ao inicializar o banco: " + e.getMessage());
