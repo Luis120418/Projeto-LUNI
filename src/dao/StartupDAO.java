@@ -23,8 +23,10 @@ public class StartupDAO {
             ps.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException("Erro ao salvar startup", e);
+        System.err.println("ERRO SQL ao salvar startup:");
+        e.printStackTrace(); // mostra o erro completo no console
         }
+
     }
 
     public void criarTabela() {
