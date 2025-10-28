@@ -100,7 +100,7 @@ public class ConsoleApp {
     List<Startup> lista = dao.listar();
 
     if (lista.isEmpty()) {
-        System.out.println("❌ Nenhuma startup salva no banco ainda.");
+        System.out.println(" Nenhuma startup salva no banco ainda.");
         return;
     }
 
@@ -125,7 +125,7 @@ public class ConsoleApp {
     }
 
     Startup escolhida = lista.get(idx);
-    System.out.println("🚀 Continuando o jogo para: " + escolhida.getNome());
+    System.out.println(" Continuando o jogo para: " + escolhida.getNome());
 
     GameEngine engine = new GameEngine();
     engine.executar(escolhida, config.totalRodadas(), config.maxDecisoesPorRodada());
