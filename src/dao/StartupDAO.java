@@ -5,6 +5,8 @@ import model.vo.Dinheiro;
 import model.vo.Humor;
 import model.vo.Percentual;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StartupDAO {
 
@@ -42,5 +44,37 @@ public class StartupDAO {
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao criar tabela startup", e);
         }
+    }
+
+    public List<Startup> listar() {
+        List<Startup> lista = new ArrayList<>();
+        String sql = "SELECT nome, caixa, receita_base, reputacao, moral FROM startup";
+
+        try (Connection conn = ConnectionFactory.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                String nome = rs.getString("nome");
+                double caixa = rs.getDouble("caixa");
+                double receita = rs.getDouble("receita_base");
+                int reputacao = rs.getInt("reputacao");
+                int moral = rs.getInt("moral");
+
+                Startup s = new Startup(
+                    nome,
+                    new Dinheiro(caixa),
+                    new Dinheiro(receita),
+                    new Humor(reputacao),
+                    new Humor(moral)
+                );
+                lista.add(s);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao listar startups: " + e.getMessage());
+        }
+
+        return lista;
     }
 }
