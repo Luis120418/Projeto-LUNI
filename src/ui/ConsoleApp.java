@@ -59,9 +59,9 @@ public class ConsoleApp {
     try {
         dao.StartupDAO dao = new dao.StartupDAO();
         dao.salvar(s);
-        System.out.println("✅ Startup salva no banco de dados!");
+        System.out.println(" Startup salva no banco de dados!");
         } catch (Exception e) {
-        System.err.println("⚠️ Erro ao salvar no banco: " + e.getMessage());
+        System.err.println(" Erro ao salvar no banco: " + e.getMessage());
         }
         }
 
