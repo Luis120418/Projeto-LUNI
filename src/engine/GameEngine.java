@@ -1,4 +1,5 @@
 package engine;
+import dao.RodadaDAO;
 
 import java.util.Scanner;
 
@@ -23,6 +24,8 @@ public class GameEngine {
      */
     public void executar(Startup startup, int totalRodadas, int maxDecisoesPorRodada) {
     Scanner in = new Scanner(System.in);
+    RodadaDAO rodadaDAO = new RodadaDAO();
+
 
     System.out.println("\n=== Iniciando o jogo para " + startup.getNome() + " ===");
 
@@ -38,6 +41,8 @@ public class GameEngine {
             Deltas delta = estrategia.aplicar(startup);
             aplicarDeltas(startup, delta); // converte Deltas (numéricos) para VO na Startup
             startup.registrar("Decisão aplicada: " + tipo);
+            rodadaDAO.salvarDecisao(startup, rodada, tipo);
+
         }
 
         // --- fechamento da rodada ---
@@ -62,6 +67,14 @@ public class GameEngine {
             "Fechamento : receita R$%.2f; nova receitaBase R$%.2f; caixa R$%.2f",
             receita, startup.getReceitaBase().valor(), startup.getCaixa().valor()
         ));
+        
+        rodadaDAO.salvarRodada(
+        startup,
+        rodada,
+        receita,
+        startup.getCaixa().valor(),
+        startup.getReceitaBase().valor()
+        );
 
         startup.registrar("Rodada " + rodada + " concluída com sucesso!");
     } // ✅ esta chave agora fecha o loop principal de rodadas
