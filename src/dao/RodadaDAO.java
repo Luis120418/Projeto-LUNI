@@ -6,7 +6,43 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class RodadaDAO {
+    public void criarTabelaRodada() {
+    String sql = """
+        CREATE TABLE IF NOT EXISTS rodada (
+            id IDENTITY PRIMARY KEY,
+            startup_nome VARCHAR(255),
+            numero_rodada INT,
+            receita DOUBLE,
+            caixa DOUBLE,
+            receita_base DOUBLE
+        )
+    """;
+    try (Connection conn = ConnectionFactory.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql)) {
+        ps.execute();
+    } catch (SQLException e) {
+        System.err.println("Erro ao criar tabela rodada: " + e.getMessage());
+    }
+}
 
+public void criarTabelaDecisao() {
+    String sql = """
+        CREATE TABLE IF NOT EXISTS decisao (
+            id IDENTITY PRIMARY KEY,
+            startup_nome VARCHAR(255),
+            numero_rodada INT,
+            tipo_decisao VARCHAR(50)
+        )
+    """;
+    try (Connection conn = ConnectionFactory.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql)) {
+        ps.execute();
+    } catch (SQLException e) {
+        System.err.println("Erro ao criar tabela decisao: " + e.getMessage());
+    }
+}
+
+    
     public void salvarRodada(Startup s, int numeroRodada, double receita, double caixa, double receitaBase) {
         String sql = """
             INSERT INTO rodada (startup_nome, numero_rodada, receita, caixa, receita_base)
