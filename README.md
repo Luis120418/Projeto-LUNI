@@ -40,17 +40,11 @@ resources/
 Compile e execute o `Main` **incluindo `resources` no classpath**:
 
 ```bash
-# Compilar (Linux/Mac)
-javac -d out $(find src -name "*.java")
+# Compilar (Windows)
+javac Main.java
 
-# Compilar (Windows PowerShell - exemplo)
-javac -d out (Get-ChildItem -Recurse -Filter *.java | ForEach-Object { $_.FullName })
-
-# Executar (Linux/Mac)
-java -cp out:resources Main
-
-# Executar (Windows PowerShell)
-java -cp "out;resources" Main
+# Executar (Windows) 
+java Main
 ```
 
 ---
