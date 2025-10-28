@@ -10,14 +10,15 @@ public class ConnectionFactory {
     private static final String PASSWORD = "";
 
     static {
-        try {
-            Class.forName("org.h2.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException("Driver H2 não encontrado!", e);
+    try {
+        Class.forName("org.h2.Driver");
+        try (Connection conn = getConnection()) {
+            java.sql.Statement stmt = conn.createStatement();
+            stmt.execute("RUNSCRIPT FROM 'src/dao/schema.sql'");
         }
+    } catch (Exception e) {
+        throw new RuntimeException("Erro ao carregar schema: " + e.getMessage());
+    }
     }
 
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASSWORD);
-    }
 }
