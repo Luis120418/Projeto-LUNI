@@ -1,0 +1,12 @@
+2025-10-28 16:37:59.429655-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM STARTUP STARTUP [*]NOME"; SQL statement:
+SELECT * FROM STARTUP STARTUP NOME [42000-240]
+2025-10-28 16:38:00.677116-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM STARTUP STARTUP [*]NOME"; SQL statement:
+SELECT * FROM STARTUP STARTUP NOME [42000-240]
+2025-10-28 16:38:01.060156-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM STARTUP STARTUP [*]NOME"; SQL statement:
+SELECT * FROM STARTUP STARTUP NOME [42000-240]
+2025-10-28 16:38:03.221598-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]ID"; expected "INSERT"; SQL statement:
+ID [42001-240]
